@@ -6,7 +6,7 @@ CAN_IFACE="$2"
 
 export DISPLAY=:1
 
-echo -e "Starting ICSim... Please wait.\n"
+echo "Starting ICSim... Please wait.\n"
 
 # launch virtual display
 Xvfb :1 -screen 0 692x350x16 > /dev/null 2>&1 &
