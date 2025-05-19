@@ -1,20 +1,25 @@
 #!/system/bin/sh
 
-echo "Stopping ICSim..."
+echo "Stopping ICSim...\n"
 
 # Kill ICSim
 pkill -f "/opt/car_hacking/ICSim/builddir/icsim"
+echo "✅ ICSim stopped!"
 
 # Kill noVNC proxy
 pkill -f "novnc_proxy"
+echo "✅ noVNC stopped!"
 
 # Kill x11vnc
 pkill -f "x11vnc"
+echo "✅ VNC Server Stopped!"
 
 # Kill fluxbox
 pkill -f "fluxbox"
+echo "✅ Window manager Stopped!"
 
 # Kill Xvfb
 pkill -f "Xvfb :1"
+echo "✅ Virtual Display Stopped!"
 
-echo "✅ All ICSim-related processes stopped."
+echo "\n✅ All ICSim-related processes Stopped."
