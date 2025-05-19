@@ -24,9 +24,11 @@ echo "✅ VNC Server Started!"
 
 cd /opt/car_hacking/ICSim/builddir
 ./icsim "$RANDOMIZE" "$CAN_IFACE" > /dev/null 2>&1 &
-echo "✅ ICSim running..."
+echo "✅ ICSim Started!"
 
 # run noVNC proxy
 cd /opt/noVNC
 ./utils/novnc_proxy --vnc localhost:5900 --listen 6080 > /dev/null 2>&1 &
-echo "✅ noVNC is running! Go back to ICSim and refresh display!"
+echo "✅ noVNC Started!"
+
+echo "\nICSim is running! Go back to ICSim and refresh display!"
