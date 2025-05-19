@@ -1,5 +1,7 @@
 #!/system/bin/sh
 
+echo "Stopping ICSim..."
+
 # Kill ICSim
 pkill -f "/opt/car_hacking/ICSim/builddir/icsim"
 
@@ -15,4 +17,4 @@ pkill -f "fluxbox"
 # Kill Xvfb
 pkill -f "Xvfb :1"
 
-echo "All ICSim-related processes stopped."
+echo "✅ All ICSim-related processes stopped."
