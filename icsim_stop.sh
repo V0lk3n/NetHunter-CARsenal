@@ -4,11 +4,11 @@ echo "Stopping ICSim...\n"
 
 # Kill ICSim
 pkill -f "/opt/car_hacking/ICSim/builddir/icsim"
-echo "✅ ICSim stopped!"
+echo "✅ ICSim Stopped!"
 
 # Kill noVNC proxy
 pkill -f "novnc_proxy"
-echo "✅ noVNC stopped!"
+echo "✅ noVNC Stopped!"
 
 # Kill x11vnc
 pkill -f "x11vnc"
