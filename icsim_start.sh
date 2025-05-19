@@ -1,27 +1,32 @@
 #!/system/bin/sh
 
-CAN_IFACE="$1"
+RANDOMIZE="$1"
 
-if [ -z "$CAN_IFACE" ]; then
-    CAN_IFACE="vcan0"
-fi
+CAN_IFACE="$2"
 
 export DISPLAY=:1
 
+echo "Starting ICSim... Please wait.\n"
+
 # launch virtual display
-Xvfb :1 -screen 0 692x350x16 &
+Xvfb :1 -screen 0 692x350x16 & > /dev/null 2>&1
+echo "✅ Virtual Display Started!"
 
 # launch window manager
 sleep 5
-fluxbox &
+fluxbox & > /dev/null 2>&1
+echo "✅ Window manager Started!"
 
 # launch VNC Server
 sleep 2
-x11vnc -display :1 -nopw -forever -bg -rfbport 5900
+x11vnc -display :1 -nopw -forever -bg -rfbport 5900 > /dev/null 2>&1
+echo "✅ VNC Server Started!"
 
 cd /opt/car_hacking/ICSim/builddir
-./icsim "$CAN_IFACE" &
+./icsim "$RANDOMIZE" "$CAN_IFACE" & > /dev/null 2>&1
+echo "✅ ICSim running..."
 
 # run noVNC proxy
 cd /opt/noVNC
-./utils/novnc_proxy --vnc localhost:5900 --listen 6080
+./utils/novnc_proxy --vnc localhost:5900 --listen 6080 > /dev/null 2>&1
+echo "✅ noVNC is running! Go back to ICSim and refresh display!"
