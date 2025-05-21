@@ -33,6 +33,7 @@ DISPLAY=:1 ./icsim -s "$SEED" "$CAN_IFACE" > /dev/null 2>&1 &
 echo "✅ ICSim Started on $CAN_IFACE with seed: $SEED"
 
 # Run controls with the correct seed
+cd /opt/car_hacking/ICSim/builddir
 DISPLAY=:2 ./controls -s "$SEED" "$CAN_IFACE" "$LEVEL" > /dev/null 2>&1 &
 
 echo "✅ Controls Started!"
