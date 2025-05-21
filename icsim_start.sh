@@ -58,4 +58,4 @@ echo "✅ ICSim noVNC Started!"
 ./utils/novnc_proxy --vnc localhost:5901 --listen 6081 > /dev/null 2>&1 &
 echo "✅ Controls noVNC Started!"
 
-echo "\nICSim is running! Go back to ICSim and refresh display!"
+echo "\nICSim and Controls is running! Go back to CARsenal ICSim tab and refresh display!"
