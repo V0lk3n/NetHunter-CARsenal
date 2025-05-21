@@ -1,8 +1,8 @@
 #!/system/bin/sh
 
-RANDOMIZE="$1"
+CAN_IFACE="$1"
 
-CAN_IFACE="$2"
+LEVEL="$2"
 
 echo "Starting ICSim... Please wait.\n"
 
@@ -28,26 +28,12 @@ echo "✅ Controls VNC Server Started!"
 
 # launch ICSim
 cd /opt/car_hacking/ICSim/builddir
-
-if [ "$RANDOMIZE" = " -r" ]; then
-    # Capture seed by running ICSim with -r and parsing output
-    SEED=$(DISPLAY=:1 ./icsim "$RANDOMIZE" "$CAN_IFACE" 2>&1 | tee /tmp/icsim_output.log | grep "Seed:" | awk '{print $2}')
-    
-    echo "✅ ICSim Started with seed: $SEED"
-    
-    # Now run ICSim again in the background with the same seed
-    DISPLAY=:1 ./icsim "$SEED" "$CAN_IFACE" > /dev/null 2>&1 &
-else
-    DISPLAY=:1 ./icsim "$RANDOMIZE" "$CAN_IFACE" > /dev/null 2>&1 &
-    echo "✅ ICSim Started without seed!"
-fi
+SEED="1747857648"
+DISPLAY=:1 ./icsim -s "$SEED" "$CAN_IFACE" > /dev/null 2>&1 &    
+echo "✅ ICSim Started on $CAN_IFACE with seed: $SEED"
 
 # Run controls with the correct seed
-if [ -n "$SEED" ]; then
-    DISPLAY=:2 ./controls "$SEED" "$CAN_IFACE" > /dev/null 2>&1 &
-else
-    DISPLAY=:2 ./controls "$CAN_IFACE" > /dev/null 2>&1 &
-fi
+DISPLAY=:2 ./controls -s "$SEED" "$CAN_IFACE" "$LEVEL" > /dev/null 2>&1 &
 
 echo "✅ Controls Started!"
 
