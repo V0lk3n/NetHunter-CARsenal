@@ -23,7 +23,7 @@ pkill -f "fluxbox"
 echo "✅ Window manager Stopped!"
 
 # Kill Xvfb ICSim and Controls display
-pkill -f "ICSim Xvfb :1"
+pkill -f "Xvfb :1"
 echo "✅ Virtual Display Stopped!"
 pkill -f "Xvfb :2"
 echo "✅ Controls Virtual Display Stopped!"
