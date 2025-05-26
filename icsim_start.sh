@@ -1,7 +1,8 @@
 #!/system/bin/sh
 
 CAN_IFACE="$1"
-LEVEL="$2"
+LEVEL_PARAM="$2"
+LEVEL="$3"
 SEED="1747857648"
 
 echo "Starting ICSim... Please wait.\n"
