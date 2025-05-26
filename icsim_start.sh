@@ -34,7 +34,7 @@ echo "\nStarting Controls... Please wait.\n"
 # Controls
 # launch virtual display
 export DISPLAY=:2
-Xvfb :2 -screen 0 635x708x16 > /dev/null 2>&1 &
+Xvfb :2 -screen 0 835x608x16 > /dev/null 2>&1 &
 echo "✅ Controls Virtual Display Started!"
 # launch window manager
 sleep 5
