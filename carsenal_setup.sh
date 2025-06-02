@@ -135,3 +135,16 @@ update() {
     echo -e "\n✅ Update complete! Closing in 3 seconds..."
     sleep 3
 }
+
+case "$1" in
+  setup)
+    setup
+    ;;
+  update)
+    update
+    ;;
+  *)
+    echo "Usage: $0 {setup|update}"
+    exit 1
+    ;;
+esac
