@@ -67,7 +67,7 @@ setup() {
         "cd /opt && sudo git clone https://github.com/novnc/noVNC.git"
 
     checkAndInstall "ICSIM" "/opt/car_hacking/ICSim/builddir/icsim" "/opt/car_hacking/ICSim" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/ICSim.git && cd ICSim && sudo cp /opt/car_hacking/can-utils/lib.o . && sudo meson setup builddir && cd builddir && sudo meson compile && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_start.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_stop.sh && sudo chmod +x icsim_start.sh icsim_stop.sh"
+        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/ICSim.git && cd ICSim && sudo cp /opt/car_hacking/can-utils/lib.o . && sudo meson setup builddir && cd builddir && sudo meson compile && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_start.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_stop.sh && wget wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && sudo chmod +x icsim_start.sh icsim_stop.sh icsim_service.sh"
 
     checkAndInstall "sequence_finder.sh" "/opt/car_hacking/sequence_finder.sh" "/opt/car_hacking" \
         "cd /opt/car_hacking && sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/sequence_finder.sh && sudo chmod +x sequence_finder.sh"
@@ -121,7 +121,8 @@ update() {
          cd /opt/car_hacking && sudo rm -f icsim_start.sh icsim_stop.sh && \
          sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_start.sh && \
          sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_stop.sh && \
-         sudo chmod +x icsim_start.sh icsim_stop.sh"
+         sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && \
+         sudo chmod +x icsim_start.sh icsim_stop.sh icsim_service.sh"
 
     checkAndUpdate "can_reset.sh" "/opt/car_hacking/can_reset.sh" "/opt/car_hacking" \
         "cd /opt/car_hacking && sudo rm -f can_reset.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/can_reset.sh && sudo chmod +x can_reset.sh"
