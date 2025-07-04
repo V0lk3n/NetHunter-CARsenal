@@ -40,6 +40,8 @@ setup() {
 
     sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb
 
+    gem install serialport
+
     mkdir -p /opt/car_hacking
 
     checkAndInstall "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
