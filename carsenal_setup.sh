@@ -40,7 +40,7 @@ setup() {
 
     sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb
 
-    gem install serialport
+    sudo gem install serialport
 
     mkdir -p /opt/car_hacking
 
@@ -94,6 +94,8 @@ update() {
 
     sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb
 
+    sudo gem update
+    
     checkAndUpdate "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
         "cd /opt/car_hacking/can-utils && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo make && sudo make install; }"
 
