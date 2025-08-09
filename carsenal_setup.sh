@@ -38,7 +38,7 @@ setup() {
 
     sudo apt update
 
-    sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb python3-can
+    sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb python3-can metasploit-framework
 
     sudo gem install serialport
 
@@ -92,7 +92,7 @@ update() {
 
     sudo apt update
 
-    sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb python3-can
+    sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb python3-can metasploit-framework
 
     sudo gem update
     
