@@ -44,6 +44,11 @@ setup() {
 
     mkdir -p /opt/car_hacking
 
+    sudo sed -i -e '/^\s*deflogin on/ s/^/#/' \
+            -e '/^\s*bind I login on/ s/^/#/' \
+            -e '/^\s*bind O login off/ s/^/#/' /etc/screenrc
+
+
     checkAndInstall "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
         "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/can-utils.git && cd can-utils && sudo make && sudo make install"
 
@@ -95,6 +100,10 @@ update() {
     sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb python3-can metasploit-framework
 
     sudo gem update
+
+    sudo sed -i -e '/^\s*deflogin on/ s/^/#/' \
+            -e '/^\s*bind I login on/ s/^/#/' \
+            -e '/^\s*bind O login off/ s/^/#/' /etc/screenrc
     
     checkAndUpdate "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
         "cd /opt/car_hacking/can-utils && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo make && sudo make install; }"
