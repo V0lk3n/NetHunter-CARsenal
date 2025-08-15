@@ -51,9 +51,9 @@ start_icsim() {
 stop_icsim() {
     echo "Stopping ICSim..."
 
-    pkill -f "/opt/car_hacking/ICSim/builddir/icsim"
+    pkill -x icsim
     echo "✅ ICSim Stopped!"
-    pkill -f "/opt/car_hacking/ICSim/builddir/controls"
+    pkill -x controls
     echo "✅ Controls Stopped!"
     pkill -f "novnc_proxy"
     echo "✅ noVNC Stopped!"
