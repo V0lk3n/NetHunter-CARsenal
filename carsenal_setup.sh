@@ -48,9 +48,8 @@ setup() {
             -e '/^\s*bind I login on/ s/^/#/' \
             -e '/^\s*bind O login off/ s/^/#/' /etc/screenrc
 
-
     checkAndInstall "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/can-utils.git && cd can-utils && sudo make && sudo make install"
+        "cd /opt/car_hacking && sudo rm -rf can-utils && sudo git clone https://github.com/v0lk3n/can-utils.git && cd can-utils && sudo make && sudo make install"
 
     checkAndInstall "Cannelloni" "/usr/local/bin/cannelloni" "/opt/car_hacking/cannelloni" \
         "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/cannelloni.git && cd cannelloni && sudo cmake -DCMAKE_BUILD_TYPE=Release . && sudo make && sudo make install"
