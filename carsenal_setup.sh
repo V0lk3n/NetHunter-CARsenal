@@ -139,7 +139,7 @@ update() {
 
     checkAndUpdate "UDSim" "/opt/car_hacking/UDSim/src/udsim" "/opt/car_hacking/UDSim" \
         "cd /opt/car_hacking/UDSim && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; cd /opt/car_hacking/UDSim/src && make; }; \
-         sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && \
+         cd /opt/car_hacking && sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && \
          sudo chmod +x udsim_service.sh"
 
     checkAndUpdate "can_reset.sh" "/opt/car_hacking/can_reset.sh" "/opt/car_hacking" \
