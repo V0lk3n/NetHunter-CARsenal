@@ -11,7 +11,7 @@ start_udsim() {
 
     # UDSim
     export DISPLAY=:5
-    Xvfb :1 -screen 0 692x350x16 > /dev/null 2>&1 &
+    Xvfb :5 -screen 0 692x350x16 > /dev/null 2>&1 &
     echo "✅ UDSim Virtual Display Started!"
     sleep 5
     fluxbox > /dev/null 2>&1 &
