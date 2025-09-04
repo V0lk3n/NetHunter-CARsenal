@@ -20,7 +20,7 @@ start_udsim() {
     x11vnc -display :5 -nopw -forever -bg -rfbport 5902 > /dev/null 2>&1
     echo "✅ UDSim VNC Server Started!"
     cd /opt/car_hacking/UDSim/src
-    ./udsim -f "$CAN_IFACE" > /dev/null 2>&1 &
+    ./udsim -f -v "$CAN_IFACE" > /dev/null 2>&1 &
     echo "✅ UDSim Started on $CAN_IFACE"
     cd /opt/noVNC
     ./utils/novnc_proxy --vnc localhost:5902 --listen 6082 > /dev/null 2>&1 &
