@@ -1,0 +1,13 @@
+[7e0]
+pos = 300,131
+responder = 0
+positiveID = 7e8
+negativeID = 7e8
+{Packets}
+7e0#0210030000000000
+
+[7e8]
+pos = 350,181
+responder = 1
+{Packets}
+7e8#0650030096177000
