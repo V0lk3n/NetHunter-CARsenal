@@ -40,14 +40,14 @@ start_icsim() {
     echo "✅ Controls VNC Server Started!"
     cd /opt/car_hacking/ICSim/builddir    
     if [ -n "$2" ]; then
-        LEVEL="$2"
+        LEVEL="$3"
     else
         LEVEL=""
     fi
 
     if [ -n "$LEVEL" ]; then
         ./controls "$CAN_IFACE" -s "$SEED" -l "$LEVEL" > /dev/null 2>&1 &
-        echo "✅ Controls Started with $LEVEL_PARAM $LEVEL"
+        echo "✅ Controls Started with Level : $LEVEL"
 
     else
         ./controls "$CAN_IFACE" -s "$SEED" > /dev/null 2>&1 &
