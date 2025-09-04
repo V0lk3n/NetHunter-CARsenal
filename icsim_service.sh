@@ -39,9 +39,16 @@ start_icsim() {
     x11vnc -display :2 -nopw -forever -bg -rfbport 5901 > /dev/null 2>&1
     echo "✅ Controls VNC Server Started!"
     cd /opt/car_hacking/ICSim/builddir    
-    if [ -n "$LEVEL_PARAM" ] && [ -n "$LEVEL" ]; then
-        ./controls "$CAN_IFACE" -s "$SEED" "$LEVEL_PARAM" "$LEVEL" > /dev/null 2>&1 &
+    if [ -n "$2" ]; then
+        LEVEL="$2"
+    else
+        LEVEL=""
+    fi
+
+    if [ -n "$LEVEL" ]; then
+        ./controls "$CAN_IFACE" -s "$SEED" -l "$LEVEL" > /dev/null 2>&1 &
         echo "✅ Controls Started with $LEVEL_PARAM $LEVEL"
+
     else
         ./controls "$CAN_IFACE" -s "$SEED" > /dev/null 2>&1 &
         echo "✅ Controls Started without extra params"
