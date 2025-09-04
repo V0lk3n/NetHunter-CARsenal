@@ -4,12 +4,12 @@ ACTION="$1"
 
 start_udsim() {
     CAN_IFACE="$1"
-    LOG_PARAM="$2"
-    LOG="$3"
+    CONF_PARAM="$2"
+    CONF="$3"
     
     echo "Starting UDSim... Please wait."
 
-    # UDSim
+    # UDSim virtual display setup
     export DISPLAY=:5
     Xvfb :5 -screen 0 692x350x16 > /dev/null 2>&1 &
     echo "✅ UDSim Virtual Display Started!"
@@ -19,15 +19,21 @@ start_udsim() {
     sleep 2
     x11vnc -display :5 -nopw -forever -bg -rfbport 5902 > /dev/null 2>&1
     echo "✅ UDSim VNC Server Started!"
+
     cd /opt/car_hacking/UDSim/src
-    ./udsim -f "$CAN_IFACE" > /dev/null 2>&1 &
-    echo "✅ UDSim Started on $CAN_IFACE"
+    if [ -n "$CONF_PARAM" ] && [ -n "$CONF" ]; then
+        ./udsim "$CONF_PARAM" "$CONF" -f "$CAN_IFACE" > /dev/null 2>&1 &
+        echo "✅ UDSim Started on $CAN_IFACE with config: $CONF"
+    else
+        ./udsim -f "$CAN_IFACE" > /dev/null 2>&1 &
+        echo "✅ UDSim Started on $CAN_IFACE without config"
+    fi
+
     cd /opt/noVNC
     ./utils/novnc_proxy --vnc localhost:5902 --listen 6082 > /dev/null 2>&1 &
     echo "✅ UDSim noVNC Started!"
-
-    echo "\nUDSim is running! Go back to CARsenal Simulator tab and refresh display!"
 }
+
 
 stop_udsim() {
     echo "Stopping UDSim..."
@@ -53,7 +59,7 @@ elif [ -n "$ACTION" ]; then
     start_udsim "$@"
 else
     echo "Usage:"
-    echo "  $0 <caninterface> [log-param] [log]  # to start UDSim"
+    echo "  $0 <caninterface> [config-param] [config]  # to start UDSim"
     echo "  $0 stop                                  # to stop UDSim"
     exit 1
 fi
