@@ -11,14 +11,14 @@ start_icsim() {
     echo "Starting ICSim... Please wait."
 
     # ICSim
-    export DISPLAY=:1
-    Xvfb :1 -screen 0 692x350x16 > /dev/null 2>&1 &
+    export DISPLAY=:3
+    Xvfb :3 -screen 0 692x350x16 > /dev/null 2>&1 &
     echo "✅ ICSim Virtual Display Started!"
     sleep 5
     fluxbox > /dev/null 2>&1 &
     echo "✅ ICSim Window manager Started!"
     sleep 2
-    x11vnc -display :1 -nopw -forever -bg -rfbport 5900 > /dev/null 2>&1
+    x11vnc -display :3 -nopw -forever -bg -rfbport 5900 > /dev/null 2>&1
     echo "✅ ICSim VNC Server Started!"
     cd /opt/car_hacking/ICSim/builddir
     ./icsim -s "$SEED" "$CAN_IFACE" > /dev/null 2>&1 &
@@ -29,14 +29,14 @@ start_icsim() {
 
     echo "\nStarting Controls... Please wait."
 
-    export DISPLAY=:2
-    Xvfb :2 -screen 0 835x608x16 > /dev/null 2>&1 &
+    export DISPLAY=:4
+    Xvfb :4 -screen 0 835x608x16 > /dev/null 2>&1 &
     echo "✅ Controls Virtual Display Started!"
     sleep 5
     fluxbox > /dev/null 2>&1 &
     echo "✅ Controls Window manager Started!"
     sleep 2
-    x11vnc -display :2 -nopw -forever -bg -rfbport 5901 > /dev/null 2>&1
+    x11vnc -display :4 -nopw -forever -bg -rfbport 5901 > /dev/null 2>&1
     echo "✅ Controls VNC Server Started!"
     cd /opt/car_hacking/ICSim/builddir    
     if [ -n "$2" ]; then
