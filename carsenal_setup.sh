@@ -88,7 +88,7 @@ setup() {
         "sudo python3 -m venv /opt/car_hacking/car_venv && /opt/car_hacking/car_venv/bin/pip install vininfo[cli]"
 
     # Edit noVNC to disable control bar
-    grep -qz '#noVNC_control_bar {\n    display: none;\n}' /opt/noVNC/app/styles/base.css || echo -e '\n#noVNC_control_bar {\n    display: none;\n}' >> /opt/noVNC/app/styles/base.css
+    grep -q '#noVNC_control_bar[[:space:]]*{' /opt/noVNC/app/styles/base.css || echo -e '\n#noVNC_control_bar {\n    display: none;\n}' >> /opt/noVNC/app/styles/base.css
 
     echo -e "\n✅ Setup complete! Closing in 3 seconds..."
     sleep 3
@@ -155,7 +155,7 @@ update() {
         "sudo python3 -m venv /opt/car_hacking/car_venv && /opt/car_hacking/car_venv/bin/pip install vininfo[cli]"
 
     # Edit noVNC to disable control bar
-    grep -qz '#noVNC_control_bar {\n    display: none;\n}' /opt/noVNC/app/styles/base.css || echo -e '\n#noVNC_control_bar {\n    display: none;\n}' >> /opt/noVNC/app/styles/base.css
+    grep -q '#noVNC_control_bar[[:space:]]*{' /opt/noVNC/app/styles/base.css || echo -e '\n#noVNC_control_bar {\n    display: none;\n}' >> /opt/noVNC/app/styles/base.css
     
     echo -e "\n✅ Update complete! Closing in 3 seconds..."
     sleep 3
