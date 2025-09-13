@@ -48,7 +48,7 @@ setup() {
             -e '/^\s*bind I login on/ s/^/#/' \
             -e '/^\s*bind O login off/ s/^/#/' /etc/screenrc
 
-    checkAndInstall "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
+    checkAndInstall "Can-Utils" "/usr/local/bin/cangen" "/opt/car_hacking/can-utils" \
         "cd /opt/car_hacking && sudo rm -rf can-utils && sudo git clone https://github.com/v0lk3n/can-utils.git && cd can-utils && sudo make && sudo make install"
 
     checkAndInstall "Cannelloni" "/usr/local/bin/cannelloni" "/opt/car_hacking/cannelloni" \
@@ -107,7 +107,7 @@ update() {
             -e '/^\s*bind I login on/ s/^/#/' \
             -e '/^\s*bind O login off/ s/^/#/' /etc/screenrc
     
-    checkAndUpdate "Can-Utils" "/usr/bin/cangen" "/opt/car_hacking/can-utils" \
+    checkAndUpdate "Can-Utils" "/usr/local/bin/cangen" "/opt/car_hacking/can-utils" \
         "cd /opt/car_hacking/can-utils && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo make && sudo make install; }"
 
     checkAndUpdate "Cannelloni" "/usr/local/bin/cannelloni" "/opt/car_hacking/cannelloni" \
