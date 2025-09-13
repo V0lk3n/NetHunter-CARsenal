@@ -106,7 +106,7 @@ update() {
 
     sudo apt install -y autoconf cmake expect fluxbox git libconfig-dev libsdl2-dev libsdl2-image-dev libsocketcan-dev make maven meson python3-pip python3-venv websockify x11vnc xserver-xephyr xvfb python3-can metasploit-framework
 
-    sudo gem update
+    sudo gem update serialport
 
     sudo sed -i -e '/^\s*deflogin on/ s/^/#/' \
             -e '/^\s*bind I login on/ s/^/#/' \
