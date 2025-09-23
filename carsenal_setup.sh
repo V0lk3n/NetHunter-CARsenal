@@ -76,7 +76,7 @@ setup() {
         "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/ICSim.git && cd /opt/car_hacking/ICSim && sudo cp /opt/car_hacking/can-utils/lib.o . && sudo meson setup builddir && cd builddir && sudo meson compile && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && sudo chmod +x icsim_service.sh"
 
     checkAndInstall "UDSim" "/opt/car_hacking/UDSim/src/udsim" "/opt/car_hacking/UDSim" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/UDSim.git && cd /opt/car_hacking/UDSim/src && ./make && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_vcan_config && sudo chmod +x udsim_service.sh"
+        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/UDSim.git && cd /opt/car_hacking/UDSim/src && make && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_vcan_config && sudo chmod +x udsim_service.sh"
 
     checkAndInstall "sequence_finder.sh" "/opt/car_hacking/sequence_finder.sh" "/opt/car_hacking" \
         "cd /opt/car_hacking && sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/sequence_finder.sh && sudo chmod +x sequence_finder.sh"
