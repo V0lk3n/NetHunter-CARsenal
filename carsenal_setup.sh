@@ -58,7 +58,7 @@ setup() {
         "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/usb-can.git && cd usb-can && sudo gcc -o canusb canusb.c && sudo cp canusb /usr/local/bin/canusb"
 
     checkAndInstall "Freediag" "/usr/local/bin/freediag" "/opt/car_hacking/freediag" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/freediag.git && cd freediag && ./build_simple.sh && sudo cp build/scantool/freediag /usr/local/bin/freediag && sudo cp build/scantool/diag_test /usr/local/bin/diag_test"
+        "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/freediag.git && cd freediag && ./build_simple.sh && sudo ln -s /opt/car_hacking/freediag/build/scantool/freediag /usr/local/bin/freediag && sudo ln -s /opt/car_hacking/freediag/build/scantool/diag_test /usr/local/bin/diag_test && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/freediag.ini -O /opt/car_hacking/freediag/build/scantool/freediag.ini"
 
     checkAndInstall "Socketcand" "/usr/local/sbin/socketcand" "/opt/car_hacking/socketcand" \
         "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/socketcand.git && cd socketcand && sudo meson setup -Dlibconfig=true --buildtype=release build && sudo meson compile -C build && sudo meson install -C build"
@@ -122,7 +122,7 @@ update() {
         "cd /opt/car_hacking/usb-can && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo gcc -o canusb canusb.c && sudo cp canusb /usr/local/bin/canusb; }"
 
     checkAndUpdate "Freediag" "/usr/local/bin/freediag" "/opt/car_hacking/freediag" \
-        "cd /opt/car_hacking/freediag && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; ./build_simple.sh && sudo cp build/scantool/freediag /usr/local/bin/freediag && sudo cp build/scantool/diag_test /usr/local/bin/diag_test; }"
+        "cd /opt/car_hacking/freediag && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; ./build_simple.sh && sudo ln -s /opt/car_hacking/freediag/build/scantool/freediag /usr/local/bin/freediag && sudo ln -s /opt/car_hacking/freediag/build/scantool/diag_test /usr/local/bin/diag_test && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/freediag.ini -O /opt/car_hacking/freediag/build/scantool/freediag.ini; }"
 
     checkAndUpdate "Socketcand" "/usr/local/sbin/socketcand" "/opt/car_hacking/socketcand" \
         "cd /opt/car_hacking/socketcand && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo meson setup -Dlibconfig=true --buildtype=release build && sudo meson compile -C build && sudo meson install -C build; }"
