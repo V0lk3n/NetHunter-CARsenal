@@ -67,7 +67,7 @@ setup() {
         "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/usb-can-2.git && cd usb-can-2 && sudo ./build.sh && sudo cp -f src/hlcand /usr/local/bin/hlcand"
 
     checkAndInstall "CaringCaribou" "/usr/local/bin/caringcaribou" "/opt/car_hacking/caringcaribou" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/caringcaribou.git && cd caringcaribou && sudo python3 setup.py install"
+        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/caringcaribou.git && cd caringcaribou && sudo python3 -W ignore setup.py install"
 
     checkAndInstall "noVNC" "/opt/noVNC/utils/novnc_proxy" "/opt/noVNC" \
         "cd /opt && sudo git clone https://github.com/novnc/noVNC.git"
@@ -131,7 +131,7 @@ update() {
         "cd /opt/car_hacking/usb-can-2 && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo ./build.sh && sudo cp -f src/hlcand /usr/local/bin/hlcand; }"
 
     checkAndUpdate "CaringCaribou" "/usr/local/bin/caringcaribou" "/opt/car_hacking/caringcaribou" \
-        "cd /opt/car_hacking/caringcaribou && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo python3 setup.py install; }"
+        "cd /opt/car_hacking/caringcaribou && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo python3 -W ignore setup.py install; }"
 
     checkAndUpdate "noVNC" "/opt/noVNC/utils/novnc_proxy" "/opt/noVNC" \
         "cd /opt/noVNC && sudo git pull"
