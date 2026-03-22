@@ -58,7 +58,7 @@ setup() {
         "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/usb-can.git && cd usb-can && sudo gcc -o canusb canusb.c && sudo cp canusb /usr/local/bin/canusb"
 
     checkAndInstall "Freediag" "/usr/local/bin/freediag" "/opt/car_hacking/freediag" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/freediag.git && cd freediag && ./build_simple.sh && sudo ln -s /opt/car_hacking/freediag/build/scantool/freediag /usr/local/bin/freediag && sudo ln -s /opt/car_hacking/freediag/build/scantool/diag_test /usr/local/bin/diag_test && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/freediag.ini -O /opt/car_hacking/freediag/build/scantool/freediag.ini"
+        "cd /opt/car_hacking && sudo git clone https://github.com/v0lk3n/freediag.git && cd freediag && ./build_simple.sh && sudo ln -s /opt/car_hacking/freediag/build/scantool/freediag /usr/local/bin/freediag && sudo ln -s /opt/car_hacking/freediag/build/scantool/diag_test /usr/local/bin/diag_test && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/freediag.ini -O /opt/car_hacking/freediag/build/scantool/freediag.ini"
 
     checkAndInstall "Socketcand" "/usr/local/sbin/socketcand" "/opt/car_hacking/socketcand" \
         "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/socketcand.git && cd socketcand && sudo meson setup -Dlibconfig=true --buildtype=release build && sudo meson compile -C build && sudo meson install -C build"
@@ -73,16 +73,16 @@ setup() {
         "cd /opt && sudo git clone https://github.com/novnc/noVNC.git"
 
     checkAndInstall "ICSIM" "/opt/car_hacking/ICSim/builddir/icsim" "/opt/car_hacking/ICSim" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/ICSim.git && cd /opt/car_hacking/ICSim && sudo cp /opt/car_hacking/can-utils/lib.o . && sudo meson setup builddir && cd builddir && sudo meson compile && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && sudo chmod +x icsim_service.sh"
+        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/ICSim.git && cd /opt/car_hacking/ICSim && sudo cp /opt/car_hacking/can-utils/lib.o . && sudo meson setup builddir && cd builddir && sudo meson compile && cd /opt/car_hacking && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && sudo chmod +x icsim_service.sh"
 
     checkAndInstall "UDSim" "/opt/car_hacking/UDSim/src/udsim" "/opt/car_hacking/UDSim" \
-        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/UDSim.git && cd /opt/car_hacking/UDSim/src && make && cd /opt/car_hacking && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_vcan_config && sudo chmod +x udsim_service.sh"
+        "cd /opt/car_hacking && sudo git clone https://github.com/V0lk3n/UDSim.git && cd /opt/car_hacking/UDSim/src && make && cd /opt/car_hacking && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_vcan_config && sudo chmod +x udsim_service.sh"
 
     checkAndInstall "sequence_finder.sh" "/opt/car_hacking/sequence_finder.sh" "/opt/car_hacking" \
-        "cd /opt/car_hacking && sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/sequence_finder.sh && sudo chmod +x sequence_finder.sh"
+        "cd /opt/car_hacking && sudo wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/sequence_finder.sh && sudo chmod +x sequence_finder.sh"
 
     checkAndInstall "can_reset.sh" "/opt/car_hacking/can_reset.sh" "/opt/car_hacking" \
-        "cd /opt/car_hacking && sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/can_reset.sh && sudo chmod +x can_reset.sh"
+        "cd /opt/car_hacking && sudo wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/can_reset.sh && sudo chmod +x can_reset.sh"
 
     checkAndInstall "VinInfo" "/opt/car_hacking/car_venv/bin/vininfo" "/opt/car_hacking/car_venv" \
         "sudo python3 -m venv /opt/car_hacking/car_venv && /opt/car_hacking/car_venv/bin/pip install vininfo[cli]"
@@ -122,7 +122,7 @@ update() {
         "cd /opt/car_hacking/usb-can && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo gcc -o canusb canusb.c && sudo cp canusb /usr/local/bin/canusb; }"
 
     checkAndUpdate "Freediag" "/usr/local/bin/freediag" "/opt/car_hacking/freediag" \
-        "cd /opt/car_hacking/freediag && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; ./build_simple.sh && sudo ln -s /opt/car_hacking/freediag/build/scantool/freediag /usr/local/bin/freediag && sudo ln -s /opt/car_hacking/freediag/build/scantool/diag_test /usr/local/bin/diag_test && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/freediag.ini -O /opt/car_hacking/freediag/build/scantool/freediag.ini; }"
+        "cd /opt/car_hacking/freediag && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; ./build_simple.sh && sudo ln -s /opt/car_hacking/freediag/build/scantool/freediag /usr/local/bin/freediag && sudo ln -s /opt/car_hacking/freediag/build/scantool/diag_test /usr/local/bin/diag_test && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/freediag.ini -O /opt/car_hacking/freediag/build/scantool/freediag.ini; }"
 
     checkAndUpdate "Socketcand" "/usr/local/sbin/socketcand" "/opt/car_hacking/socketcand" \
         "cd /opt/car_hacking/socketcand && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo meson setup -Dlibconfig=true --buildtype=release build && sudo meson compile -C build && sudo meson install -C build; }"
@@ -139,19 +139,19 @@ update() {
     checkAndUpdate "ICSIM" "/opt/car_hacking/ICSim/builddir/icsim" "/opt/car_hacking/ICSim" \
         "cd /opt/car_hacking/ICSim && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; sudo meson setup builddir && sudo cp /opt/car_hacking/can-utils/lib.o . && cd builddir && sudo meson compile; }; \
          cd /opt/car_hacking && sudo rm -f icsim_start.sh icsim_stop.sh && \
-         sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && \
+         sudo wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/icsim_service.sh && \
          sudo chmod +x icsim_service.sh"
 
     checkAndUpdate "UDSim" "/opt/car_hacking/UDSim/src/udsim" "/opt/car_hacking/UDSim" \
         "cd /opt/car_hacking/UDSim && old=\$(git rev-parse HEAD) && sudo git pull && new=\$(git rev-parse HEAD) && [[ \"\$old\" != \"\$new\" ]] && { echo 'Update detected! Updating...'; cd /opt/car_hacking/UDSim/src && make; }; \
-         cd /opt/car_hacking && sudo wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_vcan_config && \
+         cd /opt/car_hacking && sudo wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_service.sh && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/udsim_vcan_config && \
          sudo chmod +x udsim_service.sh"
 
     checkAndUpdate "can_reset.sh" "/opt/car_hacking/can_reset.sh" "/opt/car_hacking" \
-        "cd /opt/car_hacking && sudo rm -f can_reset.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/can_reset.sh && sudo chmod +x can_reset.sh"
+        "cd /opt/car_hacking && sudo rm -f can_reset.sh && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/can_reset.sh && sudo chmod +x can_reset.sh"
 
     checkAndUpdate "sequence_finder.sh" "/opt/car_hacking/sequence_finder.sh" "/opt/car_hacking" \
-        "cd /opt/car_hacking && sudo rm -f sequence_finder.sh && wget https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/sequence_finder.sh && sudo chmod +x sequence_finder.sh"
+        "cd /opt/car_hacking && sudo rm -f sequence_finder.sh && wget -N https://raw.githubusercontent.com/V0lk3n/NetHunter-CARsenal/refs/heads/main/sequence_finder.sh && sudo chmod +x sequence_finder.sh"
 
     checkAndUpdate "VinInfo" "/opt/car_hacking/car_venv/bin/vininfo" "/opt/car_hacking/car_venv" \
         "sudo python3 -m venv /opt/car_hacking/car_venv && /opt/car_hacking/car_venv/bin/pip install vininfo[cli]"
